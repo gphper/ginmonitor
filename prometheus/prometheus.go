@@ -25,9 +25,17 @@ var (
 	}, []string{
 		"method", "path",
 	})
+
+	HttpRquestStatus = prometheus.NewCounterVec(prometheus.CounterOpts{
+		Namespace: "myapp",
+		Subsystem: "gin",
+		Name:      "http_request_status",
+		Help:      "接口请求状态统计",
+	}, []string{
+		"method", "path", "status",
+	})
 )
 
 func init() {
-	prometheus.MustRegister(HttpRequestCounter)
-	prometheus.MustRegister(HttpRquestTime)
+	prometheus.MustRegister(HttpRequestCounter, HttpRquestTime, HttpRquestStatus)
 }

@@ -30,5 +30,5 @@ func main() {
 
 	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
-	r.Run(":2112") // 监听并在 0.0.0.0:8080 上启动服务
+	r.Run(":2112")
 }
